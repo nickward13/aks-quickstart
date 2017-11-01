@@ -1,8 +1,10 @@
-RESOUCEGROUP=aks-group
+RESOURCEGROUP=aks-group
 CLUSTERNAME=aksCluster
+LOCATION=westus
 
-echo "Creating resource group..."
-az group create --name $RESOURCEGROUP --location westus2
+echo "Creating resource group $RESOURCEGROUP in $LOCATION..."
+
+az group create --name $RESOURCEGROUP --location $LOCATION
 echo "Creating AKS cluster..."
 az aks create --resource-group $RESOURCEGROUP --name $CLUSTERNAME --generate-ssh-keys --agent-count 1
 echo "Connecting to AKS cluster..."
